@@ -26,6 +26,13 @@
         justify-content: center;
         align-items: center;
       }
+      .canvas-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
     </style>
   </head>
   <body>
@@ -227,12 +234,9 @@
           "
         />
       </div>
-      <canvas
-        width="1440"
-        height="155"
-        style="position: absolute; top: 0px; left: 0px"
-      ></canvas>
+      <div class="canvas-container" id="particles-js"></div>
     </div>
+    <script src="./particles.js-master/particles.js"></script>
     <script>
       const banner = document.querySelector(".animated-banner");
       const layers = banner.querySelectorAll(".layer");
@@ -292,6 +296,11 @@
           animateDiffX(n, interval * (1 - ratio));
         });
       }
+      window.onload = function () {
+        particlesJS.load("particles-js", "./sakura.json", function () {
+          console.log("callback - particles.js config loaded");
+        });
+      };
     </script>
   </body>
 </html>
